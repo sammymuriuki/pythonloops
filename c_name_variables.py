@@ -43,4 +43,3 @@ for member in members:
     print(name)
     """ print the value of the variable `phone_number`"""
     print(phone_number)
-    

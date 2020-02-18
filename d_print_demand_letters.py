@@ -30,7 +30,7 @@ members = json.load(members_file)
 members_file.close()
 
 """ iterate over the members list. each member is assigned to a variable called `member' """
-for member in members[:1]:  
+for member in members:
     """ assign the first element of the member variable (index 0) to variable `name`"""  
     name = member[0]
     """ assign the second element of the member variable (index 1) to variable `phone_number`"""
@@ -46,43 +46,33 @@ for member in members[:1]:
     """ assign the seventh element of the member variable (index 6) to variable `purchases`"""
     purchases = member[6]
     """ iterate through purchases of this member to get details of the items purchased. Assign each purchased item to a variable called `purchase` """
-    letter =  address+" "+city+", "+state+" "+str(zip_code)
-    +"February 9, 2018"
-    +"Herbie Humphrey"
-    +"Herbie/'s House of Products"
-    +"1 Goodvalue Place"
-    +"Boston, MA, 01234"
-
-    +"Dear Mr. Humphrey:"
-
-    +"I am writing to you under the provisions of Massachusetts General Laws, Chapter 93A, Section 9, the Consumer Protection Act."
-    +"I am writing to request relief as outlined in that statute."
-
-    +"On the following dates, the following unfair or deceptive acts or practices occurred: "
+    letter = address + " " + city + ", " + state + " " + zip_code+ "February 9, 2018 "\
+    """Herbie Humphrey 
+    Herbie's House of Products 
+    1 Goodvalue Place 
+    Boston, MA, 01234
+    Dear Mr. Humphrey: 
+    I am writing to you under the provisions of Massachusetts General Laws, Chapter 93A, Section 9, the Consumer Protection Act.
+    I am writing to request relief as outlined in that statute.
+    On the following dates, the following unfair or deceptive acts or practices occurred: """
     total_amount = 0
+    item = ""
     for purchase in purchases:
-       
-       purchase_date = purchase[0]
-       
-       item_name = purchase[1]
-       
-       price = float(purchase[2])
-       
-       behavior = purchase[3]
-       total_amount = total_amount+price
-       +" * On "+str(purchase_date)+ "I purchased a "+item_name+" from your store, at a cost of "+{str(price)}+". The product subsequently "+behavior+"."
-     
-    +"I believe that these acts or practices are declared unlawful by Section 2 of Chapter 93A, which declares unfair methods"
-    +"of competition and unfair or deceptive acts or practices in the conduct of any trade or commerce unlawful."
-
-    +"I have suffered injury or loss of money or property in the amount of "+str(total_amount)+"."
-
-    +"This letter serves as my request for the following relief: refund of the above amount."
-    +"Under the provisions of Section 9 Chapter 93A, I am providing you with the opportunity to make a written offer of"
-    +"settlement of this claim within 30 days.  If you fail to make a good faith offer of settlement in response to this"
-    +"request, and I institute legal action, a court may award me triple damages (amounting to a total of  "+str(total_amount*3)+" ),"
-    +"as well as attorney’s fees and costs if the court finds in my favor."
-
-    +"I may be reached at the address written above, or at "+phone_number+" between the hours of 9AM and 5PM.  I look forward to hearing from you."
-    +"Sincerely, "+name
+        purchase_date = purchase[0]
+        item_name = purchase[1]
+        price = float(purchase[2])
+        behavior = purchase[3]
+        total_amount = total_amount + price
+        item += item_name
+        letter += " * On " + purchase_date + " I purchased a " + item_name + " from your store, at a cost of " + str(price) + ". The product subsequently " + behavior + "."\
+    "I believe that these acts or practices are declared unlawful by Section 2 of Chapter 93A, which declares unfair methods"\
+    "of competition and unfair or deceptive acts or practices in the conduct of any trade or commerce unlawful."\
+    "I have suffered injury or loss of money or property in the amount of " + str(total_amount) + "."\
+    "This letter serves as my request for the following relief: refund of the above amount."\
+    "Under the provisions of Section 9 Chapter 93A, I am providing you with the opportunity to make a written offer of"\
+    "settlement of this claim within 30 days.  If you fail to make a good faith offer of settlement in response to this"\
+    "request, and I institute legal action, a court may award me triple damages (amounting to a total of  " + str( total_amount*3 ) + " ),"\
+    "as well as attorney’s fees and costs if the court finds in my favor."\
+    "I may be reached at the address written above, or at " + phone_number + " between the hours of 9AM and 5PM.  I look forward to hearing from you."\
+    "Sincerely, " + name
     print(letter)
